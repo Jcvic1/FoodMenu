@@ -23,10 +23,7 @@ class Dish(DishBase):
     class Config:
         orm_mode = True
 
-# class DishReponse(Dish):
-#     status: str
-#     results: int
-#     dishes: List[Dish]  
+
 
 # SubMenu Schema
 

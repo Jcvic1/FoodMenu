@@ -76,6 +76,16 @@ async def read_submenus(db: Session = Depends(get_db),  limit: int = 10, page: i
         submenu.dishes_count = len(submenu.dishes)
     return submenus
 
+# For validation preferably
+
+# @router.get('/menus/{menu_id}/submenus', response_model=List[schemas.SubMenuReponse])
+# async def read_submenus(menu_id: int, db: Session = Depends(get_db),  limit: int = 10, page: int = 1, search: str = ''):
+#     item = 'submenu'
+#     submenus = menu_crud.read_items(db=db, menu_id=menu_id, limit=limit, page=page, search=search, item=item)
+#     for submenu in submenus:
+#         submenu.dishes_count = len(submenu.dishes)
+#     return submenus
+
 @router.get('/menus/{menu_id}/submenus/{submenu_id}', response_model=schemas.SubMenuReponse)
 async def read_submenu(menu_id: int, submenu_id: int, db: Session = Depends(get_db)):
     item = 'submenu'
@@ -112,6 +122,14 @@ async def read_dishes(db: Session = Depends(get_db),  limit: int = 10, page: int
     item = 'dish'
     dishes = menu_crud.read_items(db=db, limit=limit, page=page, search=search, item=item)
     return dishes
+ 
+# For validation preferably
+
+# @router.get('/menus/{menu_id}/submenus/{submenu_id}/dishes/', response_model=List[schemas.Dish])
+# async def read_dishes(menu_id: int, submenu_id: int, db: Session = Depends(get_db),  limit: int = 10, page: int = 1, search: str = ''):
+#     item = 'dish'
+#     dishes = menu_crud.read_items(db=db, menu_id=menu_id, submenu_id=submenu_id, limit=limit, page=page, search=search, item=item)
+#     return dishes
 
 @router.get('/menus/{menu_id}/submenus/{submenu_id}/dishes/{dish_id}', response_model=schemas.Dish)
 async def read_dish(menu_id: int, submenu_id: int, dish_id: int, db: Session = Depends(get_db)):

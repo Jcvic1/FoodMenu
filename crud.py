@@ -100,6 +100,8 @@ class CRUD:
                             status_code=404, detail="dish not found")
                     return item_query
 
+    # For current test
+
     def read_items(self, db: Session, item: str, limit: int = 20, page: int = 1, search: Optional[str] = None):
         skip = (page - 1) * limit
 
@@ -110,6 +112,34 @@ class CRUD:
         elif item == 'dish':
             return db.query(self.item_class_dish).filter(self.item_class_dish.title.contains(search)).limit(limit).offset(skip).all()
 
+    # For validation preferably
+
+    # def read_items(self, db: Session, item: str, limit: int = 20, page: int = 1, search: Optional[str] = None, menu_id: int = None, submenu_id: int = None):
+    #     skip = (page - 1) * limit
+
+    #     if item == 'menu':
+    #         return db.query(self.item_class_menu).filter(self.item_class_menu.title.contains(search)).limit(limit).offset(skip).all()
+    #     elif item == 'submenu':
+    #         item_query = db.query(self.item_class_menu).filter(
+    #             self.item_class_menu.id == menu_id).first()
+    #         if not item_query:
+    #             raise HTTPException(status_code=404, detail="menu not found")
+    #         else:
+    #             return db.query(self.item_class_submenu).filter(self.item_class_submenu.title.contains(search)).limit(limit).offset(skip).all()
+    #     elif item == 'dish':
+    #         item_query = db.query(self.item_class_menu).filter(
+    #             self.item_class_menu.id == menu_id).first()
+    #         if not item_query:
+    #             raise HTTPException(status_code=404, detail="menu not found")
+    #         else:
+    #             item_query = db.query(self.item_class_submenu).filter(
+    #                 self.item_class_submenu.id == submenu_id).first()
+    #             if not item_query:
+    #                 raise HTTPException(
+    #                     status_code=404, detail="submenu not found")
+    #             else:
+    #                 return db.query(self.item_class_dish).filter(self.item_class_dish.title.contains(search)).limit(limit).offset(skip).all()
+        
     def update_item(self, db: Session, item_schema: Type, item_id: int, item: str, menu_id: int = None, submenu_id: int = None):
 
         if item == 'menu':
