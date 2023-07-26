@@ -2,7 +2,7 @@
 
 1. clone repository or download zip.
 
-2.create an environment and install requirements.txt.
+2. create an environment and install requirements.txt.
 
 3. create .env file in parent folder and add POSTGRES_URL in format below
 
