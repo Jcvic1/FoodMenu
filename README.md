@@ -6,6 +6,6 @@
 
 3. create .env file in parent folder and add POSTGRES_URL in format below
 
-POSTGRES_URL=postgresql://******:*******@ep-shy-…menu?options=endpoint%3Dep-shy-mountain-213281
+POSTGRES_URL=postgresql://{username}}:{{password}}@{{host}}
 
 4. Start server with uvicorn main:app --reload
